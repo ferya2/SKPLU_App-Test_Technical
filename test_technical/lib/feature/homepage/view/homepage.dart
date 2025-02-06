@@ -24,74 +24,76 @@ class HomePage extends StatelessWidget {
           SafeArea(
             child: Padding(
               padding: CustomPadding.kSidePadding,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  // Top bar widget
-                  TopBarItem(),
-                  const SizedBox(height: 30),
-                  // Textfield search
-                  TextFieldSearch(),
-                  const SizedBox(height: 30),
-                  Text('Recomend for you',
-                      style: AppTextStyle.smallTextWhiteColor),
-                  const SizedBox(height: 10),
-                  // Promo banner
-                  PromoBanner(),
-                  // Near with SPKLU
-                  const SizedBox(height: 40),
-                  Text('Near with your location',
-                      style: AppTextStyle.smallTextBlackColor),
-                  const SizedBox(height: 10),
-                  // Banner SPKLU
-                  SPKLUCard(
-                    imagePath: 'assets/images/chargestation.png',
-                    title: 'SPKLU Mandalajati',
-                    subtitle: '1,3 km',
-                    backgroundColor: AppColor.secondaryColor,
-                    borderColor: Colors.white,
-                    textColor: AppColor.blackNeutral,
-                    subtitleColor: Colors.red,
-                    onTap: () {
-                      print('SPKLU Mandalajati diklik!');
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  // Banner History Transaction
-                  Text('History Transaction',
-                      style: AppTextStyle.smallTextBlackColor),
-                  const SizedBox(height: 10),
-                  SPKLUCard(
-                    imagePath: 'assets/images/transactionhistory.png',
-                    title: 'History Transaction',
-                    subtitle: 'check your history transaction',
-                    backgroundColor: AppColor.secondaryColor,
-                    borderColor: Colors.white,
-                    textColor: AppColor.blackNeutral,
-                    subtitleColor: AppColor.greyDark,
-                    onTap: () {
-                      print('History Transaction diklik!');
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  // Energy Consumption Banner
-                  Text('Energy Consumption',
-                      style: AppTextStyle.smallTextBlackColor),
-                  const SizedBox(height: 10),
-                  SPKLUCard(
-                    imagePath: 'assets/images/energyconsumption.png',
-                    title: 'History Energy Consumption',
-                    subtitle: '1,3 km',
-                    backgroundColor: AppColor.secondaryColor,
-                    borderColor: Colors.white,
-                    textColor: AppColor.blackNeutral,
-                    subtitleColor: Colors.red,
-                    onTap: () {
-                      print('SPKLU Mandalajati diklik!');
-                    },
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    // Top bar widget
+                    TopBarItem(),
+                    const SizedBox(height: 30),
+                    // Textfield search
+                    TextFieldSearch(),
+                    const SizedBox(height: 30),
+                    Text('Recomend for you',
+                        style: AppTextStyle.smallTextWhiteColor),
+                    const SizedBox(height: 10),
+                    // Promo banner
+                    PromoBanner(),
+                    // Near with SPKLU
+                    const SizedBox(height: 40),
+                    Text('Near with your location',
+                        style: AppTextStyle.smallTextBlackColor),
+                    const SizedBox(height: 10),
+                    // Banner SPKLU
+                    SPKLUCard(
+                      imagePath: 'assets/images/chargestation.png',
+                      title: 'SPKLU Mandalajati',
+                      subtitle: '1,3 km',
+                      backgroundColor: AppColor.secondaryColor,
+                      borderColor: Colors.white,
+                      textColor: AppColor.blackNeutral,
+                      subtitleColor: Colors.red,
+                      onTap: () {
+                        print('SPKLU Mandalajati diklik!');
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    // Banner History Transaction
+                    Text('History Transaction',
+                        style: AppTextStyle.smallTextBlackColor),
+                    const SizedBox(height: 10),
+                    SPKLUCard(
+                      imagePath: 'assets/images/transactionhistory.png',
+                      title: 'History Transaction',
+                      subtitle: 'check your history transaction',
+                      backgroundColor: AppColor.secondaryColor,
+                      borderColor: Colors.white,
+                      textColor: AppColor.blackNeutral,
+                      subtitleColor: AppColor.greyDark,
+                      onTap: () {
+                        print('History Transaction diklik!');
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    // Energy Consumption Banner
+                    Text('Energy Consumption',
+                        style: AppTextStyle.smallTextBlackColor),
+                    const SizedBox(height: 10),
+                    SPKLUCard(
+                      imagePath: 'assets/images/energyconsumption.png',
+                      title: 'History Energy Consumption',
+                      subtitle: '1,3 km',
+                      backgroundColor: AppColor.secondaryColor,
+                      borderColor: Colors.white,
+                      textColor: AppColor.blackNeutral,
+                      subtitleColor: Colors.red,
+                      onTap: () {
+                        print('Energy Consumption diklik!');
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

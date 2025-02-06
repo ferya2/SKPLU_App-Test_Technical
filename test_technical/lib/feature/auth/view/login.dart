@@ -21,92 +21,94 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.whiteNeutral,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true, // Pastikan ini diatur ke true
       body: SafeArea(
-        child: Padding(
-          padding: CustomPadding.kSidePadding,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // animasi lottie
-              Center(
-                  child: Lottie.asset('assets/animations/loginLottie.json',
-                      height: 340)),
-              // text
-              Text('Login', style: AppTextStyle.title),
-              Text('Please login to continue.', style: AppTextStyle.subtitle),
-              const SizedBox(height: 40),
-              // textfield username
-              TextFieldCustom(
-                controller: usernameController,
-                icon: Icons.person_outline,
-                labelText: 'Username',
-                hintText: 'Enter your username',
-              ),
-              const SizedBox(height: 20),
-              // textfield password
-              TextFieldPassword(
-                controller: passwordController,
-                labelText: 'Password',
-                hintText: 'Enter your password',
-              ),
-              // Forgot Password
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      RoutingPage.onGenerateRoute(
-                          RouteSettings(name: '/forgotpassword')),
-                    );
-                  },
-                  child: Text(
-                    'Forgot Password?',
-                    style: AppTextStyle.smallText,
+        child: SingleChildScrollView(
+          // Tambahkan SingleChildScrollView
+          child: Padding(
+            padding: CustomPadding.kSidePadding,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // animasi lottie
+                Center(
+                    child: Lottie.asset('assets/animations/loginLottie.json',
+                        height: 340)),
+                // text
+                Text('Login', style: AppTextStyle.title),
+                Text('Please login to continue.', style: AppTextStyle.subtitle),
+                const SizedBox(height: 40),
+                // textfield username
+                TextFieldCustom(
+                  controller: usernameController,
+                  icon: Icons.person_outline,
+                  labelText: 'Username',
+                  hintText: 'Enter your username',
+                ),
+                const SizedBox(height: 20),
+                // textfield password
+                TextFieldPassword(
+                  controller: passwordController,
+                  labelText: 'Password',
+                  hintText: 'Enter your password',
+                ),
+                // Forgot Password
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        RoutingPage.onGenerateRoute(
+                            RouteSettings(name: '/forgotpassword')),
+                      );
+                    },
+                    child: Text(
+                      'Forgot Password?',
+                      style: AppTextStyle.smallText,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Button login
-              Consumer<LoginViewModel>(
-                builder: (context, model, child) {
-                  return ButtonCustom(
-                    label: model.isLoading ? 'Loading...' : 'Login',
-                    onPressed: model.isLoading
-                        ? null
-                        : () {
-                            // Bungkus operasi async dalam fungsi sinkron
-                            _loginDummy(model, context);
-                          } as VoidCallback?, // Casting as VoidCallback agar bisa dianggap sebagai VoidCallback
-                  );
-                },
-              ),
-
-              // jika tidak ada akun
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Don\'t have an account?',
-                      style: AppTextStyle.smallTextGreyColor,
-                    ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              RoutingPage.onGenerateRoute(
-                                  RouteSettings(name: '/register')));
-                        },
-                        child: Text(
-                          'Register',
-                          style: AppTextStyle.smallText,
-                        ))
-                  ],
+                const SizedBox(height: 10),
+                // Button login
+                Consumer<LoginViewModel>(
+                  builder: (context, model, child) {
+                    return ButtonCustom(
+                      label: model.isLoading ? 'Loading...' : 'Login',
+                      onPressed: model.isLoading
+                          ? null
+                          : () {
+                              _loginDummy(model, context);
+                            } as VoidCallback?,
+                    );
+                  },
                 ),
-              )
-            ],
+
+                // jika tidak ada akun
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Don\'t have an account?',
+                        style: AppTextStyle.smallTextGreyColor,
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                RoutingPage.onGenerateRoute(
+                                    RouteSettings(name: '/register')));
+                          },
+                          child: Text(
+                            'Register',
+                            style: AppTextStyle.smallText,
+                          ))
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -120,19 +122,20 @@ class LoginView extends StatelessWidget {
       passwordController.text,
     );
 
-    // Ensure the widget is still mounted
     if (context.mounted) {
       if (isSuccess) {
-        // Show success snack bar
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Login successful')),
         );
 
-        // Navigate to home page
         Navigator.pushReplacement(context,
             RoutingPage.onGenerateRoute(RouteSettings(name: '/navbar')));
+      } else if (usernameController.text.isEmpty ||
+          passwordController.text.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Textfield harus diisi')),
+        );
       } else {
-        // Show failure snack bar
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Login failed')),
         );
