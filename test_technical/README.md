@@ -31,6 +31,6 @@
     - ViewModel → Menghubungkan Model dengan View serta mengelola state menggunakan Provider.
 
 # Package
-[Link Package](#https://pub.dev/)
-[Link Package Provider](#https://pub.dev/packages/provider)
-[Link Font Poppins](#https://fonts.google.com/specimen/Poppins)
+- Link Package(https://pub.dev/)
+- Link Package Provider(https://pub.dev/packages/provider)
+- Link Font Poppins(https://fonts.google.com/specimen/Poppins)
