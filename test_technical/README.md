@@ -19,7 +19,7 @@ Project ini dikembangkan menggunakan Flutter dengan arsitektur MVVM (Model-View-
     │-- core/
     |   |-- resource/    # resouce textstyle, colors, padding
     |   |-- routes/      # routing app navigation
-    │-- Feature/         # Data models
+    │-- Feature/         # Fitur Aplikasi
     |   |-- Feature A
     │       |-- views/       # UI Screens (View layer)
     │       |-- viewmodels/  # ViewModels (Logic layer)
