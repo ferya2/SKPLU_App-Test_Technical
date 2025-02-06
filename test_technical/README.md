@@ -1,7 +1,7 @@
 # test_technical
 
 # Project Overview:
-    Project ini dikembangkan menggunakan Flutter dengan arsitektur MVVM (Model-View-ViewModel) untuk memisahkan logika bisnis dari UI. State management yang digunakan adalah Provider untuk mengelola dan mengalirkan data di seluruh aplikasi.
+Project ini dikembangkan menggunakan Flutter dengan arsitektur MVVM (Model-View-ViewModel) untuk memisahkan logika bisnis dari UI. State management yang digunakan adalah Provider untuk mengelola dan mengalirkan data di seluruh aplikasi.
 
 # Note
 - Project Menggunakan Data Dummy JSON local untuk login
